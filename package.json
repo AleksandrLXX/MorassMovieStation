@@ -1,0 +1,25 @@
+{
+  "name": "morass-movie-station",
+  "version": "1.0.0",
+  "description": "a morassmoive code followed\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[Cd folowed Scott from imooc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleksandrLXX/MorassMovieStation.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AleksandrLXX/MorassMovieStation/issues"
+  },
+  "homepage": "https://github.com/AleksandrLXX/MorassMovieStation#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "mongoose": "^4.7.7"
+  }
+}
