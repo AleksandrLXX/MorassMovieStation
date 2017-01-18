@@ -1,0 +1,15 @@
+extends ../layout
+block content
+	//- 试用数据
+-var movies=[{_id:233,title:"",src:""},{_id:234,title:"",src:""}]
+.container
+	.row
+		each item in movies
+			.col-md-2
+				.thumbnail
+					a(href="/movie/detail/#{item._id}")
+						img(src="#{item.poster}",alt="#{item.title}")
+					.caption
+						h3 #{item.title}
+						p
+							a.btn.btn-primary(href="/movie/#{item._id}", role="button") 观看预告片
