@@ -1,7 +1,14 @@
 doctype html
 html(lang="en")
-  head
-    title= pageTitle
-  body
-    h1 Jade - node template engine in views dir
-   
+	head
+		//- title= pageTitle
+	body
+		h1 Jade - node template engine in views dir
+		mixin test(value)
+			-var movie = {title:"一路向北"}
+			value = movie[value]
+			p #{movie["title"]}
+		+test("title")
+		mixin test1(label)
+			#{label} iiii
+		+test1("div")

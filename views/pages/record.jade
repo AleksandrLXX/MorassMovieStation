@@ -1,7 +1,35 @@
-doctype html
-html(lang="en")
-	head 
-			meta(charset="utf-8")
-			title #{title}
-	body
-			h1 #{title}
+extends ../layout
+block content
+	//- 试用数据
+	//- -var movies=[{_id:233,title:"这个杀手不太冷",poster_src:"",flash_src:"233.mp4",director:"吕克·贝松",country:"法国",language:"英语、意大利语",year:"1994",summary:"里昂（让·雷诺饰）是意大利裔的顶尖职业杀手，一直孤独的住在纽约小意大利，只有一株盆栽是他最好的朋友。他形容：“他比人友善多了。他跟我一样沉默，从来不会问问题，也不会想杀我。他也跟我一样，没有根。”他虽然身怀绝技，但内心非常缺乏安全感。他甚至从不敢睡在床上，而是坐在椅子上睡，并把枪放在手边。" },{_id:234,title:"",poster_src:"",flash_src:"",director:"",contry:"",language:"",year:"",summary:""}]
+	//- -var movie=movies[0]
+	.container
+		.row
+			form.form-horizontal(method="post",action="/admin/movie/new")
+				//- .form-group
+				//- 	label.col-sm-2.control-label(for="inputTitle") 片名
+				//- 	.col-sm-10
+				//- 		input#inputTitle.form-control(type="text",name="movie[title]",value="#{movie.title}")
+				+record_item("inputTitle","片名")
+				+record_item("inputDirector","导演")
+				+record_item("inputCountry","国家")
+				+record_item("inputLanguage","语种")
+				+record_item("inputPoster_src","海报地址")
+				+record_item("inputFlash_src","片源地址")
+				+record_item("inputYear","上映年代")
+				.form-group
+					label.col-sm-2.control-label(for="inputSummary") 剧情简介
+					.col-sm-10
+						textarea#inputSummary.form-control(type="text",name="movie[summary]") #{movie.summary}
+				.form-group
+					.col-sm-offset-2.col-sm-8 
+					button.btn.btn-default(type="submit") 录入
+//- 使用mixin复用代码 
+//- item------------------------------------------------------string
+//- text------------------------------------------------------string
+mixin record_item(item,text)
+	-var item_index=item.split("input")[1].toLowerCase();
+	.form-group
+		label.col-sm-2.control-label(for="#{item}") #{text}
+		.col-sm-10
+			input.form-control(id="#{item}",type="text",name="movie[#{item_index}]",value="#{movie[item_index]}")

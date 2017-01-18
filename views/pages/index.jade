@@ -1,15 +1,15 @@
 extends ../layout
 block content
 	//- 试用数据
--var movies=[{_id:233,title:"",src:""},{_id:234,title:"",src:""}]
-.container
-	.row
-		each item in movies
-			.col-md-2
-				.thumbnail
-					a(href="/movie/detail/#{item._id}")
-						img(src="#{item.poster}",alt="#{item.title}")
-					.caption
-						h3 #{item.title}
-						p
-							a.btn.btn-primary(href="/movie/#{item._id}", role="button") 观看预告片
+	//- -var movies=[{_id:233,title:"",poster_src:"",flash_src:"233.mp4",director:"",contry:"",language:"",year:"",summary:"" },{_id:234,title:"",poster_src:"",flash_src:"",director:"",contry:"",language:"",year:"",summary:""}]
+	.container
+		.row
+			each movie in movies
+				.col-md-2
+					.thumbnail
+						a(href="/movie/detail/#{movie._id}")
+							img(src="#{movie.poster_src}",alt="#{movie.title}")
+						.caption
+							h3 #{movie.title}
+							p
+								a.btn.btn-primary(href="/movie/detail/#{movie._id}", role="button") 观看预告片

@@ -1,7 +1,29 @@
-doctype html
-html(lang="en")
-	head 
-			meta(charset="utf-8")
-			title #{title}
-	body
-			h1 #{title}
+extends ../layout
+block content
+	//- 试用数据
+	//- -var movies=[{_id:233,title:"这个杀手不太冷",poster_src:"",flash_src:"233.mp4",director:"吕克·贝松",country:"法国",language:"英语、意大利语",year:"1994",summary:"里昂（让·雷诺饰）是意大利裔的顶尖职业杀手，一直孤独的住在纽约小意大利，只有一株盆栽是他最好的朋友。他形容：“他比人友善多了。他跟我一样沉默，从来不会问问题，也不会想杀我。他也跟我一样，没有根。”他虽然身怀绝技，但内心非常缺乏安全感。他甚至从不敢睡在床上，而是坐在椅子上睡，并把枪放在手边。" },{_id:234,title:"",poster_src:"",flash_src:"",director:"",contry:"",language:"",year:"",summary:""}]
+	.container
+		.row
+			table.table.table-hover.table-bordered
+				thead
+					tr
+						th 片名
+						th 导演
+						th 国家
+						th 上映时间
+						th 录入时间
+						th 查看
+						th 更新
+						th 删除
+				tbody
+					each movie in movies
+						tr(class="item-id-#{movie._id}")
+							td #{movie.title}
+							td #{movie.director}
+							td #{movie.country}
+							td #{movie.year}
+							//- td #{moment(movie.meta.createdAt).format('MM/DD/YYYY')}
+							td: a(target="_blank",href="../movie/#{movie._id}") 查看
+							td: a(target="_blank",href="../admin/update/#{movie._id}") 修改
+							td 
+								button.btn.btn-danger.del(type="button",data-id="#{movie._id}")	删除

@@ -1,8 +1,22 @@
-doctype html
-html(lang="en")
-	head 
-		meta(charset="utf-8")
-		title #{title}
-		include ../includes/head
-	body
-		h1 #{title}
+extends ../layout
+block content
+	//- 试用数据
+	//- -var movies=[{_id:233,title:"",poster_src:"",flash_src:"233.mp4",director:"",country:"",language:"",year:"",summary:"" },{_id:234,title:"",poster_src:"",flash_src:"",director:"",contry:"",language:"",year:"",summary:""}]
+	.container
+		.row
+			.col-md-7
+				embed(src="#{movie.flash_src}",autoStart="true",allowFullScreen="true",quality="high",width="720",height="600",align="middle",type="application/x-shockwave-flash",flashvars="#{movie.flashvars}")
+			.col-md-5
+				dl.dl-horizontal
+					dt 片名
+					dd= movie.title
+					dt 导演
+					dd= movie.director
+					dt 国家
+					dd= movie.country
+					dt 语言
+					dd= movie.language
+					dt 上映年份
+					dd= movie.year
+					dt 简介
+					dd= movie.summary
