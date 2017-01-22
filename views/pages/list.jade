@@ -22,8 +22,8 @@ block content
 							td #{movie.director}
 							td #{movie.country}
 							td #{movie.year}
-							//- td #{moment(movie.meta.createdAt).format('MM/DD/YYYY')}
-							td: a(target="_blank",href="../movie/#{movie._id}") 查看
+							//- td #{moment(movie.meta.updateAt).format('MM/DD/YYYY')}
+							td: a(target="_blank",href="../movie/detail/#{movie._id}") 查看
 							td: a(target="_blank",href="../admin/update/#{movie._id}") 修改
 							td 
 								button.btn.btn-danger.del(type="button",data-id="#{movie._id}")	删除
