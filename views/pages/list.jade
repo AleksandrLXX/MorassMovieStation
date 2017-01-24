@@ -22,7 +22,7 @@ block content
 							td #{movie.director}
 							td #{movie.country}
 							td #{movie.year}
-							//- td #{moment(movie.meta.updateAt).format('MM/DD/YYYY')}
+							td #{moment(movie.meta.updateAt).format('MM/DD/YYYY')}
 							td: a(target="_blank",href="../movie/detail/#{movie._id}") 查看
 							td: a(target="_blank",href="../admin/update/#{movie._id}") 修改
 							td 

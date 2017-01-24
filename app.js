@@ -38,11 +38,12 @@ app.set('views','./views/pages')
 //挂载静态资源中间件 相当于设置了给每个匹配的路径都设置了处理函数
 app.use(express.static(path.join(__dirname,"")))
 
-// parse application/x-www-form-urlencoded
+// parse application/x-www-form-urlencoded 变为json写入请求体，因为有嵌套：movie{}所以要使用qs库 extended：true
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // parse application/json 将post请求全部变为json格式写入请求体
 app.use(bodyParser.json())
+//定义静态的对象字面量moment
 app.locals.moment=require('moment')
 
 
@@ -168,10 +169,12 @@ app.post('/admin/movie/new',function (req, res) {
 			if(err){
 				console.log(err)
 			}
+			// underscore的extend方法 ，以movie为模板，以movieObj为数据源 source，将movieObj中所有键的值覆盖到movie相对应的键上，返回movie
+			// 所以movie中的方法全部存在 包括save  其实还可以传入更多对象  都会作为source进行遍历后替换movie
 			_movie=_.extend(movie,movieObj)
 			_movie.save(function(err,movie){
 				if(err){
-					console.log(err)
+					console.log(err)  
 				}
 				// 重定向到该电影的详情页
 				console.log(movie)
