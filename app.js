@@ -125,6 +125,22 @@ app.get('/admin/list',function(req, res){
 	// 	}]
 	// })
 })
+//list delete
+ app.delete('/admin/list',function(req,res){
+ 	var id=req.query.id
+ 	if(id){
+ 		console.log(id)
+ 		Movie.remove({_id:id},function(err,movie){
+ 			if(err){
+ 				console.log(err)
+ 				res.json({success:0})
+ 			}
+ 			else{
+ 				res.json({success:1})
+ 			}
+ 		})
+ 	}
+ })
 // 向host的/admin/record路径请求时响应请求 解析record.jade 
 app.get('/admin/record',function(req, res){
 	res.render('record',{
